@@ -23,7 +23,13 @@ const create = async ({ displayName, email, password, image }) => {
   return { status: 201, data: newUser, token };
 };
 
+const getUser = async ({ displayName, id, email }) => {
+  const user = await User.findOne({ where: { displayName, id, email } });
+  return user;
+};
+
 module.exports = {
   findAll,
   create,
+  getUser,
 };
