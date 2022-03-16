@@ -10,12 +10,12 @@ const userSchema = Joi.object({
   email: Joi.string().email().required()
     .messages({
       'any.required': '"email" is required|400',
-      'number.email': '"email" must be a valid email|400',
+      'string.email': '"email" must be a valid email|400',
     }),
   password: Joi.string().required().min(6)
     .messages({
       'any.required': '"password" is required|400',
-      'number.min': '"password" length must be 6 characteres long|400',
+      'string.min': '"password" length must be at least 6 characters long|400',
     }),
 });
 
