@@ -8,6 +8,13 @@ const findAll = async () => {
   }
   return { status: 200, data: users };
 };
+ 
+const findById = async (id) => {
+  const user = await User.findByPk(id);
+  if (!user) return { status: 404, message: 'User does not exist' };
+
+  return { status: 200, data: user };
+};
 
 const create = async ({ displayName, email, password, image }) => {
   const alreadyExists = await User.findOne({ where: { displayName } });
@@ -32,4 +39,5 @@ module.exports = {
   findAll,
   create,
   getUser,
+  findById,
 };
