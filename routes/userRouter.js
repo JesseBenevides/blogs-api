@@ -11,6 +11,12 @@ userRouter.get(
   userControllers.findAll,
 );
 
+userRouter.get(
+  '/:id',
+  authMiddleware,
+  userControllers.findById,
+);
+
 userRouter.post(
   '/',
   validateUser,
