@@ -1,5 +1,6 @@
 const express = require('express');
 const errorMiddleware = require('./middlewares/errorMiddleware');
+const categoriesRouter = require('./routes/categoriesRouter');
 const loginRouter = require('./routes/loginRouter');
 const userRouter = require('./routes/userRouter');
 
@@ -15,6 +16,8 @@ app.get('/', (request, response) => {
 app.use('/user', userRouter);
 
 app.use('/login', loginRouter);
+
+app.use('/categories', categoriesRouter);
 
 app.use(errorMiddleware);
 
