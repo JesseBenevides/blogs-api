@@ -4,6 +4,12 @@ const authMiddleware = require('../middlewares/authMiddleware');
 
 const categoriesRouter = express.Router();
 
+categoriesRouter.get(
+  '/',
+  authMiddleware,
+  categoriesControllers.findAll,
+);
+
 categoriesRouter.post(
   '/',
   authMiddleware,
