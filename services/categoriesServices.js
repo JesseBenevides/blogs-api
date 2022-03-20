@@ -18,7 +18,17 @@ const create = async (name) => {
   return { status: 500, message: 'Something went wrong' };
 };
 
+const validateCategories = async (categoryIds) => {
+  const validCategories = await Category.findAll();
+  const validCategoryIds = validCategories.map(({ id }) => id);
+
+  const isValid = categoryIds.every((id) => validCategoryIds.includes(id));
+  
+  return isValid;
+};
+
 module.exports = {
   create,
   findAll,
+  validateCategories,
 };
