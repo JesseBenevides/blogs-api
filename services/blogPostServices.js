@@ -41,8 +41,20 @@ const findById = async (id) => {
   return { status: 200, data: post };
 };
 
+const update = async ({ id, title, content }) => {
+  const post = await BlogPost.findByPk(id);
+
+  if (!post) return { status: 404, message: 'Post does not exist' };
+
+  await BlogPost.update({ title, content }, { where: { id } });
+
+  const result = await findById(id);
+  return result;
+};
+
 module.exports = {
   create,
   findAll,
   findById,
+  update,
 };
