@@ -12,4 +12,10 @@ blogPostRouter.post(
   blogPostControllers.create,
 );
 
+blogPostRouter.get(
+  '/',
+  authMiddleware,
+  blogPostControllers.findAll,
+);
+
 module.exports = blogPostRouter;
