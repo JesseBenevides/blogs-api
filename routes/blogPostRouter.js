@@ -18,4 +18,10 @@ blogPostRouter.get(
   blogPostControllers.findAll,
 );
 
+blogPostRouter.get(
+  '/:id',
+  authMiddleware,
+  blogPostControllers.findById,
+);
+
 module.exports = blogPostRouter;
